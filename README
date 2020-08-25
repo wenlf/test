@@ -172,8 +172,8 @@ commands:
 
     sec   rsa4096/C205FE816CCCA656 2020-08-25 [SC]
           557542B68122CD392FF7F0CFC205FE816CCCA656
-    uid                 [ 绝对 ] wenlongfei (Lfwen) <wenlongfei@hosecloud.com>
-    uid                 [ 绝对 ] \xe6\xe9\xbe\xe9\xa3\x20(Lfwen) <wenlongfei@hosecloud.com>
+    uid                 [ 绝对 ] wenlongfei (Lfwen) <wenlongfei@hosecloud.com>                // 第一个uid
+    uid                 [ 绝对 ] \xe6\xe9\xbe\xe9\xa3\x20(Lfwen) <wenlongfei@hosecloud.com>   // 第二个uidpwd
     ssb   rsa4096/4B14DD7DA84EC168 2020-08-25 [E]
 
     ##########################################################
