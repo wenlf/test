@@ -33,11 +33,34 @@ This a test for github first use.
         > gpg --list-secret-keys --keyid-format LONG
 
     b) 生成gpg key
+        > gpg --full-generate-key
+        选择算法类型 -> 秘钥长度（建议4096) -> 密码有效期
+            -> 真实姓名、电子邮件、注释
+            -> 最后确认即可。
 
-    a)  > git commit -S -m your commit message
+    c) 查看生成的key值（在sec一行，rsa/4096后面，长度16位的十六进制值），并根据该key，获得 public key block
+        > gpg --list-secret-keys --keyid-format LONG
+        > gpg --armor --export BE2C****9DA6
+
+    d) 将该public key block 复制粘贴到github gpg key设置中；
+
+    e) 将该gpg key与git关联：进入git 目录，执行(目录范围的话，不需要--global):
+        > git config [--global] user.signingkey BE2C****9DA6
+
+    e2)  > git config user.email "515302125@qq.com"
+
+    f)  使用该gpg key来关联commit提交（注意gpg key的email、git的user.email必须一致，同时为github的主email/commit email/no-reply email三者的其中一个）；
+                                                                                primary email / commit email / Default notification email
+        > git commit -S -m your commit message
         > git push
 
-    a)  > git config user.email "515302125@qq.com"
+    f2) 使用gpg key来签名及验证tag
+
+        > git tag -s mytag      // 签名
+            # Creates a signed tag
+
+        > $ git tag -v mytag    // 验证
+            # Verifies the signed tag
 
 
 
