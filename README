@@ -7,3 +7,23 @@ This a test for github first use.
     b) idea local显示操作系统当前用户名Lfwen
 
 
+2. 生成ssh key步骤
+
+    a) cd ~/.ssh ， 来查看是否已经生成id_rsa, 及id_rsa.pub
+
+    b) 生成
+        1) ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+                // This creates a new ssh key, using the provided email as a label.
+
+        2)  设置文件存储路径，可以默认
+            > Enter a file in which to save the key (/Users/you/.ssh/id_rsa): [Press enter]
+
+        3)  设置ssh密码，可以为空
+            > Enter passphrase (empty for no passphrase): [Type a passphrase]
+            > Enter same passphrase again: [Type passphrase again]
+
+    c) 可选，将ssh key与ssh-agent关联
+            > ssh-add -K ~/.ssh/id_rsa
+
+    相关链接地址：https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+
