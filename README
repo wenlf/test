@@ -1,1 +1,9 @@
 This a test for github first use.
+
+1、再新增public ssh key时，可以使用已有的邮箱地址为其它（wenlf..@hose)的id_rsa.pub来新增，
+    不会影响git ssh的下载，及git history的显示
+
+    a) git 上显示登陆用户wenlf
+    b) idea local显示操作系统当前用户名Lfwen
+
+
