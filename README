@@ -27,3 +27,115 @@ This a test for github first use.
 
     相关链接地址：https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
 
+3. 生成gpg key步骤
+
+    a) 检查gpg key是否已经生成，如果没有，则输出为空
+        > gpg --list-secret-keys --keyid-format LONG
+
+    b) 生成gpg key
+
+    a)  > git commit -S -m your commit message
+        > git push
+
+    a)  > git config user.email "515302125@qq.com"
+
+
+
+commands:
+
+> gpg --version
+  gpg (GnuPG) 2.2.19
+  libgcrypt 1.8.5
+  Copyright (C) 2019 Free Software Foundation, Inc.
+  License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>
+  This is free software: you are free to change and redistribute it.
+  There is NO WARRANTY, to the extent permitted by law.
+
+  Home: /Users/lfwen/.gnupg
+  支持的算法：
+  公钥： RSA, ELG, DSA, ECDH, ECDSA, EDDSA
+  密文： IDEA, 3DES, CAST5, BLOWFISH, AES, AES192, AES256, TWOFISH,
+      CAMELLIA128, CAMELLIA192, CAMELLIA256
+  散列： SHA1, RIPEMD160, SHA256, SHA384, SHA512, SHA224
+  压缩：  不压缩, ZIP, ZLIB, BZIP2
+
+> gpg --full-generate-key
+  gpg (GnuPG) 2.2.19; Copyright (C) 2019 Free Software Foundation, Inc.
+  This is free software: you are free to change and redistribute it.
+  There is NO WARRANTY, to the extent permitted by law.
+
+  请选择您要使用的密钥类型：
+     (1) RSA 和 RSA （默认）
+     (2) DSA 和 Elgamal
+     (3) DSA（仅用于签名）
+     (4) RSA（仅用于签名）
+    (14) Existing key from card
+  您的选择是？
+  RSA 密钥的长度应在 1024 位与 4096 位之间。
+  您想要使用的密钥长度？(2048) 4096
+  请求的密钥长度是 4096 位
+  请设定这个密钥的有效期限。
+           0 = 密钥永不过期
+        <n>  = 密钥在 n 天后过期
+        <n>w = 密钥在 n 周后过期
+        <n>m = 密钥在 n 月后过期
+        <n>y = 密钥在 n 年后过期
+  密钥的有效期限是？(0)
+  密钥永远不会过期
+  这些内容正确吗？ (y/N) y
+
+  GnuPG 需要构建用户标识以辨认您的密钥。
+
+  真实姓名： wenlongfei
+  电子邮件地址： 515302125@qq.com
+  注释： Lfwen
+  您选定了此用户标识：
+      “wenlongfei (Lfwen) <515302125@qq.com>”
+
+  更改姓名（N）、注释（C）、电子邮件地址（E）或确定（O）/退出（Q）？ O
+  我们需要生成大量的随机字节。在质数生成期间做些其他操作（敲打键盘
+  、移动鼠标、读写硬盘之类的）将会是一个不错的主意；这会让随机数
+  发生器有更好的机会获得足够的熵。
+  我们需要生成大量的随机字节。在质数生成期间做些其他操作（敲打键盘
+  、移动鼠标、读写硬盘之类的）将会是一个不错的主意；这会让随机数
+  发生器有更好的机会获得足够的熵。
+  gpg: 密钥 BE2C********9DA6 被标记为绝对信任
+  gpg: 目录‘/Users/lfwen/.gnupg/openpgp-revocs.d’已创建
+  gpg: 吊销证书已被存储为‘/Users/lfwen/.gnupg/openpgp-revocs.d/2E185129FE89BE1830BA1852BE2C********9DA6.rev’
+  公钥和私钥已经生成并被签名。
+
+  pub   rsa4096 2020-08-25 [SC]
+        2E185129FE89BE1830BA1852BE2C********9DA6
+  uid                      wenlongfei (Lfwen) <515302125@qq.com>
+  sub   rsa4096 2020-08-25 [E]
+
+> gpg --list-secret-keys --keyid-format LONG
+      gpg: 正在检查信任度数据库
+      gpg: marginals needed: 3  completes needed: 1  trust model: pgp
+      gpg: 深度：0  有效性：  1  已签名：  0  信任度：0-，0q，0n，0m，0f，1u
+      /Users/lfwen/.gnupg/pubring.kbx
+      -------------------------------
+      sec   rsa4096/BE2CB01EE0FB9DA6 2020-08-25 [SC]
+            2E185129FE89BE1830BA1852BE2CB01EE0FB9DA6
+      uid                 [ 绝对 ] wenlongfei (Lfwen) <515302125@qq.com>
+      ssb   rsa4096/0F709CBF2744943B 2020-08-25 [E]
+
+> gpg --armor --export BE2C****9DA6
+  -----BEGIN PGP PUBLIC KEY BLOCK-----
+
+  mQINBF9EfrwBEADc0vW3XYIDGeceA0abwNuewk/AnOfYSSsX99Y1+Ch2C1yy5fkr
+  5tZtlFeylYRmadA8hD9ljeOgZ8SZya6K3agq5HG/qNItJ8G4FVhY4DXG/orIM9H2
+  ***
+  Vvz46qR6/USP8O6k57ATO994iufkELf0DxhTt+xKSCBJqXudjpu2Pbz0boa7K+qy
+  aA==
+  =pNPk
+  -----END PGP PUBLIC KEY BLOCK-----
+
+> gpg --edit-key BE2CB01EE0FB9DA6       // 修改gpg key绑定的邮箱
+    gpg> adduid
+
+> git config user.signingkey BE2C********9DA6
+
+> git config user.email "515302125@qq.com"
+
+> git config --list
