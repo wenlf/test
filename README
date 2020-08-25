@@ -155,7 +155,28 @@ commands:
   -----END PGP PUBLIC KEY BLOCK-----
 
 > gpg --edit-key BE2CB01EE0FB9DA6       // 修改gpg key绑定的邮箱
-    gpg> adduid
+    gpg> adduid                         // 新增gpg key绑定的用户 （一个key可以绑定多个用户）
+
+    ##########################################################
+
+    (base) localhost:mall-taxi lfwen$ gpg --list-secret-keys --keyid-format LONG
+    gpg: 正在检查信任度数据库
+    gpg: marginals needed: 3  completes needed: 1  trust model: pgp
+    gpg: 深度：0  有效性：  2  已签名：  0  信任度：0-，0q，0n，0m，0f，2u
+    /Users/lfwen/.gnupg/pubring.kbx
+    -------------------------------
+    sec   rsa4096/BE2CB01EE0FB9DA6 2020-08-25 [SC]
+          2E185129FE89BE1830BA1852BE2CB01EE0FB9DA6
+    uid                 [ 绝对 ] wenlongfei (Lfwen) <515302125@qq.com>
+    ssb   rsa4096/0F709CBF2744943B 2020-08-25 [E]
+
+    sec   rsa4096/C205FE816CCCA656 2020-08-25 [SC]
+          557542B68122CD392FF7F0CFC205FE816CCCA656
+    uid                 [ 绝对 ] wenlongfei (Lfwen) <wenlongfei@hosecloud.com>
+    uid                 [ 绝对 ] \xe6\xe9\xbe\xe9\xa3\x20(Lfwen) <wenlongfei@hosecloud.com>
+    ssb   rsa4096/4B14DD7DA84EC168 2020-08-25 [E]
+
+    ##########################################################
 
 > git config user.signingkey BE2C********9DA6
 
